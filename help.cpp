@@ -33,3 +33,35 @@ void writeImage2x(std::string filename, int image[MAX_H2x][MAX_W2x], int height,
 	ostr.close();
 	return;
 }
+
+int sobel(int a, int b, int c, int d, int e, int f, int g, int h, int i){
+    if(a > 255){
+        a = 0;
+    }
+    if(b > 255){
+        b = 0;
+    }
+    if(c > 255){
+        c = 0;
+    }
+    if(d > 255){
+        d = 0;
+    }
+    if(e > 255){
+        e = 0;
+    }
+    if(f > 255){
+        f = 0;
+    }
+    if(g > 255){
+        g = 0;
+    }
+    if(h > 255){
+        h = 0;
+    }
+    if(i > 255){
+        i = 0;
+    }
+    return ((g+(2*h)+i)-(a+(2*b)+c));
+}
+

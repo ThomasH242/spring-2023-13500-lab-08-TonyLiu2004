@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <fstream>
 #include "imageio.h"
+#include <cmath>
 #include "help.h"
 using namespace std;
 
@@ -101,11 +102,56 @@ void scale(string input){
 	writeImage2x("taskE.pgm", out, h*2, w*2);
 }
 
+void pixelate(string input){
+    int img[MAX_H][MAX_W];
+	int h, w;
+
+	readImage(input, img, h, w);
+	int out[MAX_H][MAX_W];
+
+	for(int row = 0; row < h; row+=2) {
+		for(int col = 0; col < w; col+=2) {
+            int rounded = round((img[row][col] + img[row+1][col] + img[row][col+1] + img[row+1][col+1])/4 +0.5);
+			out[row][col] = rounded;
+            out[row+1][col] = rounded;
+            out[row][col+1] = rounded;
+            out[row+1][col+1] = rounded;
+		}
+	}
+
+	writeImage("taskF.pgm", out, h, w);
+}
+
+void kernel(string input){
+    int img[MAX_H][MAX_W];
+	int h, w;
+
+	readImage(input, img, h, w);
+	int out[MAX_H][MAX_W];
+
+	for(int row = 0; row < h; row++) {
+		for(int col = 0; col < w; col++) {
+            int f = sobel(img[row-1][col-1],img[row-1][col],img[row-1][col+1],img[row][col-1],img[row][col],img[row][col+1],img[row+1][col-1],img[row+1][col],img[row+1][col+1]);
+            if(f < 0){
+                f = 0;
+            }else if(f > 255){
+                f = 255;
+            }
+            out[row][col] = f;
+		}
+	}
+
+	writeImage("taskG.pgm", out, h, w);
+}
+
 int main() {
     std::string input = "image2.pgm";
     invert(input);
     invertHalf(input);
     box(input);
     frame(input);
+    scale(input);
+    pixelate(input);
+    kernel(input);
     return 0;
 }
