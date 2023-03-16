@@ -43,7 +43,7 @@ void invertHalf(string input){
 
 
 int main() {
-    std::string input = "image1.pgm";
+    std::string input = "image2.pgm";
     invert(input);
     invertHalf(input);
     return 0;
