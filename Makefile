@@ -13,3 +13,6 @@ main.o: main.cpp imageio.h
 
 clean:
 	rm -f sample.o imageio.o main.o
+
+rmImages:
+	rm -f taskA.pgm taskB.pgm taskC.pgm taskD.pgm
