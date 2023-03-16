@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <fstream>
 #include "imageio.h"
+#include "help.h"
 using namespace std;
 
 void invert(string input){
@@ -82,6 +83,22 @@ void frame(string input){
 	}
 
 	writeImage("taskD.pgm", out, h, w);
+}
+
+void scale(string input){
+    int img[MAX_H][MAX_W];
+	int h, w;
+
+	readImage(input, img, h, w);
+	int out[MAX_H*2][MAX_W*2];
+
+	for(int row = 0; row < h*2; row++) {
+		for(int col = 0; col < w*2; col++) {
+			out[row][col] = img[row/2][col/2];
+		}
+	}
+
+	writeImage2x("taskE.pgm", out, h*2, w*2);
 }
 
 int main() {
