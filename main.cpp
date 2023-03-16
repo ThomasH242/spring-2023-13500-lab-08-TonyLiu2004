@@ -3,11 +3,7 @@
 #include <cstdlib>
 #include <fstream>
 #include "imageio.h"
-
 using namespace std;
-
-const int MAX_H = 512;
-const int MAX_W = 512;
 
 int main() {
     std::string input = "image1.pgm";
