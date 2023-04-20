@@ -33,7 +33,7 @@ void invertHalf(string input){
 	for(int row = 0; row < h; row++) {
 		for(int col = 0; col < w; col++) {
 		    if(col > w/2){
-				    out[row][col] = abs(255- img[row][col]);
+			out[row][col] = abs(255- img[row][col]);
 		    }else{
 			out[row][col] = img[row][col];
 		    }
