@@ -14,7 +14,7 @@ main.o: main.cpp imageio.h help.h
 help.o: help.cpp help.h
 
 clean:
-	rm -f sample.o imageio.o main.o help.o
+	rm -f sample.o imageio.o main.o help.o main
 
 rmImages:
-	rm -f taskA.pgm taskB.pgm taskC.pgm taskD.pgm
+	rm -f taskA.pgm taskB.pgm taskC.pgm taskD.pgm taskE.pgm taskF.pgm taskG.pgm
